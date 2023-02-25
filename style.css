@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+    font-size: 16px;
+}
+
+body {
+    background-image: url('bg1.jpg');
+    background-clip: content-box;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.form-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(1rem);
+    width: 20rem;
+    height: 22rem;
+}
+
+h2 {
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    margin-bottom: 1.7rem;
+}
+.input-box {
+    position: relative;
+}
+
+.input-box:not(:last-child) {
+    margin-bottom: 2.3rem;
+    border-bottom: 0.1rem solid;
+}
+
+.input-box ion-icon {
+    position: absolute;
+    top: 0.1rem;
+    left: 13rem;
+}
+
+.input-box input {
+    background-color: transparent;
+    color: white;
+    padding-left: 0.3rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.input-box label {
+    position: absolute;
+    top: -0.1rem;
+    left: 0.3rem;
+    width: 15rem;
+    pointer-events: none;
+    transition: .5s;
+    font-size: 0.9rem;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -1.5rem;
+}
+
+.check-box {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.check-box input {
+    margin-left: 2rem;
+}
+
+.check-box label {
+    position: absolute;
+    top: -0.8rem;
+    left: 1.7rem;
+    font-size: 0.9rem;
+}
+
+.login {
+    width: 15rem;
+    margin: 1.3rem 0rem 1.2rem 0rem;
+    padding: 0.3rem 0rem;
+    border: 0px solid transparent;
+    border-radius: 19px;
+}
+
+.login:hover {
+    background-color: #ccc;
+}
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
+.register a {
+    color: white;
+    margin-left: 0.4rem;
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
