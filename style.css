@@ -104,6 +104,7 @@ input:valid ~ label {
     padding: 0.3rem 0rem;
     border: 0px solid transparent;
     border-radius: 19px;
+    transition: ease .25s;
 }
 
 .login:hover {
