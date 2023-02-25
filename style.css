@@ -31,15 +31,16 @@ section {
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 1rem;
     backdrop-filter: blur(1rem);
-    width: 20rem;
-    height: 22rem;
+    -webkit-backdrop-filter: blur(1rem);
+    width: 19.6rem;
+    height: 24rem;
 }
 
 h2 {
     font-size: 2em;
     color: white;
     text-align: center;
-    margin-bottom: 1.7rem;
+    margin-bottom: 2.5rem;
 }
 .input-box {
     position: relative;
@@ -123,8 +124,10 @@ input:valid ~ label {
     margin-left: 0.4rem;
     text-decoration: none;
     font-size: 0.75rem;
+    transition: .25s;
 }
 
 .register a:hover {
-    text-decoration: underline;
+    color: #ccc;
+    /* text-decoration: underline; */
 }
