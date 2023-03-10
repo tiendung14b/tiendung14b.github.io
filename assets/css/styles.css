@@ -31,7 +31,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-html, body {
+html body {
   overflow: overlay;
 }
 
