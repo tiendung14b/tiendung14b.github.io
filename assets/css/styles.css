@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 html {
@@ -45,15 +46,19 @@ body {
 
 /* ===== HEADER ===== */
 .header {
-  position: relative;
+  position: sticky;
   background-color: #e6f0ff;
+  padding-top: 1.8rem;
+  top: -18px;
+  left: 0px;
+  z-index: 1;
 }
 
 /* navigation */
 .nav-bar {
   display: flex;
   align-items: center;
-  padding-top: 3.8rem;
+  padding: 1rem 0rem;
 }
 
 .nav-bar .nav {
@@ -192,7 +197,7 @@ body {
 /* Guide */
 .guide {
   display: flex;
-  margin-top: 8rem;
+  padding-top: 16rem;
 }
 
 .guide .title {
@@ -372,8 +377,7 @@ body {
 
 /* Feature 02 */
 .stats {
-  margin-top: 7.5rem;
-  padding: 5rem 0rem;
+  padding: 12.5rem 0rem 5rem 0rem;
 }
 
 .stats .content {

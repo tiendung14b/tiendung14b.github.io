@@ -18,34 +18,34 @@
 
 <body>
   <!-- Header -->
-
+  <div id="home"></div>
   <header class="header">
     <div class="content">
       <nav class="nav-bar">
         <!-- Logo -->
-        <img src="./assets/img/logo.svg" alt="Besnik.">
+        <a href="#home"><img src="./assets/img/logo.svg" alt="Besnik."></a>
         <!-- Navigation -->
         <ul class="nav">
           <li>
-            <a href="#!">Home</a>
+            <a href="#home">Home</a>
           </li>
           <li>
-            <a href="#!">Features</a>
+            <a href="#guide">Guide</a>
           </li>
           <li>
-            <a href="#!">Services</a>
+            <a href="#features">Features</a>
           </li>
           <li>
-            <a href="#!">Recourse</a>
+            <a href="#resources">Resources</a>
           </li>
           <li>
-            <a href="#!">Contact</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
         <!-- Action -->
         <div class="action">
-          <a href="#!" class="sign-in">Sign in</a>
-          <a href="" class="btn sign-up">Sign up</a>
+          <a href="./login.html" class="sign-in">Sign in</a>
+          <a href="./login.html" class="btn sign-up">Sign up</a>
         </div>
       </nav>
   </header>
@@ -75,7 +75,7 @@
       </div>
     </div>
     <!-- Client -->
-    <div class="client">
+    <div class="client" id="client">
       <div class="content">
         <div class="info">
           <div class="col">
@@ -108,7 +108,7 @@
       </div>
     </div>
     <!-- Guide -->
-    <div class="guide">
+    <div class="guide" id="guide">
       <div class="content">
         <!-- title -->
         <h2 class="title">How its works?</h2>
@@ -150,7 +150,7 @@
       </div>
     </div>
     <!-- Feature -->
-    <div class="feature">
+    <div class="feature" id="features">
       <div class="content">
         <div class="info">
           <div class="col">
@@ -232,7 +232,7 @@
       </div>
     </div>
     <!-- Stats -->
-    <div class="stats">
+    <div class="stats" id="resources">
       <div class="content">
         <div class="row">
           <!-- image -->
@@ -309,7 +309,7 @@
       </div>
     </div>
     <!-- Subcription -->
-    <div class="subscription">
+    <div class="subscription" id="contact">
       <div class="content">
         <div class="info">
           <h2 class="title">Subscribe to our Newsletter!</h2>
@@ -364,9 +364,15 @@
               </div>
               <div class="item">
                 <div class="row-img">
-                  <div class="img"><img src="./assets/img/fb.svg" alt=""></div>
-                  <div class="img"><img src="./assets/img/twt.svg" alt=""></div>
-                  <div class="img"><img src="./assets/img/in.svg" alt=""></div>
+                  <a href="https://fb.com/tiendung14b" target="_blank" rel="noopener" class="">
+                    <div class="img"><img src="./assets/img/fb.svg" alt=""></div>
+                  </a>
+                  <a href="https://twitter.com/CocalaHoto" target="_blank" rel="noopener" class="">
+                    <div class="img"><img src="./assets/img/twt.svg" alt=""></div>
+                  </a>
+                  <a href="https://www.linkedin.com/in/tien-dung-3a1892259/" rel="noopener" target="_blank">
+                    <div class="img"><img src="./assets/img/in.svg" alt=""></div>
+                  </a>
                 </div>
               </div>
             </div>
