@@ -6,6 +6,7 @@ const ai = {
   cntMove: 0,
   maxMove: 30,
   minMove: 10,
+  maxRandom: 2,
   
   checkWin: function (board, pos, roleCheck) {
     if (countRow(board, pos, roleCheck) >= 5 ||
@@ -18,10 +19,10 @@ const ai = {
   },
 
   checkLost: function (board, pos, roleCheck) {
-    if (countRow(board, pos, roleCheck) >= 4 ||
-      countCol(board, pos, roleCheck) >= 4 ||
-      countDownDiag(board, pos, roleCheck) >= 4 ||
-      countUpDiag(board, pos, roleCheck) >= 4) {
+    if (countRow(board, pos, roleCheck) >= 5 ||
+      countCol(board, pos, roleCheck) >= 5 ||
+      countDownDiag(board, pos, roleCheck) >= 5 ||
+      countUpDiag(board, pos, roleCheck) >= 5) {
       return 1;
     }
     return 0;
@@ -95,17 +96,18 @@ const ai = {
   evaluate: function (pos, board, alpha, beta, depth, roleCheck) {
     if (pos[0] == 0 && pos[0] == board.length - 1 && pos[1] == 0 && pos[1] == board[0].length - 1 ) {
       if (this.checkWin(board, pos, this.role)) {
-        return 1000000;
+        return 5 - depth;
       } else {
-        return -1000000;
+        return -100;
       }
     }
     if (depth == 5) {
       if (this.checkWin(board, pos, this.role)) {
         return 1;
-      } else {
-        return 0;
+      } else if (this.checkLost(board, pos, this.ene)) {
+        return -1;
       }
+      return 0;
     }
     let childNodes = this.getChildNodes();
     if (roleCheck === this.role) {
@@ -114,7 +116,7 @@ const ai = {
         board[childNodes[i][0]][childNodes[i][1]] = this.role;
         if (this.checkWin(board, childNodes[i], this.role)) {
           board[childNodes[i][0]][childNodes[i][1]] = ' ';
-          return 1000000;
+          return 5 - depth;
         }
         let score = this.evaluate(childNodes[i], board, alpha, beta, depth + 1, this.ene);
         board[childNodes[i][0]][childNodes[i][1]] = ' ';
@@ -132,7 +134,7 @@ const ai = {
         board[childNodes[i][0]][childNodes[i][1]] = this.ene;
         if (this.checkLost(board, childNodes[i], this.ene)) {
           board[childNodes[i][0]][childNodes[i][1]] = ' ';
-          return -1000000;
+          return depth - 5;
         }
         let score = this.evaluate(childNodes[i], board, alpha, beta, depth + 1, this.role);
         board[childNodes[i][0]][childNodes[i][1]] = ' ';
@@ -180,7 +182,7 @@ const ai = {
       for (let j = 0; j < this.board[0].length; j++) {
         if (this.board[i][j] === ' ') {
           this.board[i][j] = this.ene;
-          if (this.checkWin(this.board, [i, j], this.ene)) {
+          if (this.checkLost(this.board, [i, j], this.ene)) {
             return [i, j];
           }
           this.board[i][j] = ' ';
@@ -196,7 +198,7 @@ const ai = {
     this.role = role;
     this.ene = role === 'x' ? 'o' : 'x';
 
-    if (this.cntMove < 3) {
+    if (this.cntMove < this.maxRandom) {
       return this.random();
     }
     
