@@ -233,6 +233,10 @@ body {
   font-size: 1.7rem;
 }
 
+.box--win {
+  color: #fc4f00;
+}
+
 .box--hover {
   display: flex;
   justify-content: center;

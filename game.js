@@ -149,6 +149,58 @@ const checkWin = (board, pos, roleCheck) => {
          countUpDiag(board, pos, roleCheck) >= 5;
 }
 
+const highlightWin = (board, pos, roleCheck) => {
+  const winMap = {};
+  winMap[role] = '<i class="fa-solid fa-xmark fa-bounce"></i>';
+  winMap[aiRole] = '<i class="fa-solid fa-o fa-bounce"></i>';
+  getBox(pos).classList.add('box--win');
+  getBox(pos).innerHTML = winMap[roleCheck];
+  getBox(pos).classList.remove('box--prev' + roleCheck);
+  if (countRow(board, pos, roleCheck) >= 5) {
+    for (let i = pos[0] - 1; i >= 0 && board[i][pos[1]] === roleCheck; i--) {
+      getBox([i, pos[1]]).classList.add('box--win');
+      getBox([i, pos[1]]).innerHTML = winMap[roleCheck];
+    }
+    for (let i = pos[0] + 1; i < rows && board[i][pos[1]] === roleCheck; i++) {
+      getBox([i, pos[1]]).classList.add('box--win');
+      getBox([i, pos[1]]).innerHTML = winMap[roleCheck];
+    }
+  }
+
+  if (countCol(board, pos, roleCheck) >= 5) {
+    for (let j = pos[1] - 1; j >= 0 && board[pos[0]][j] === roleCheck; j--) {
+      getBox([pos[0], j]).classList.add('box--win');
+      getBox([pos[0], j]).innerHTML = winMap[roleCheck];
+    }
+    for (let j = pos[1] + 1; j < cols && board[pos[0]][j] === roleCheck; j++) {
+      getBox([pos[0], j]).classList.add('box--win');
+      getBox([pos[0], j]).innerHTML = winMap[roleCheck];
+    }
+  }
+
+  if (countDownDiag(board, pos, roleCheck) >= 5) {
+    for (let i = pos[0] - 1, j = pos[1] - 1; i >= 0 && j >= 0 && board[i][j] === roleCheck; i--, j--) {
+      getBox([i, j]).classList.add('box--win');
+      getBox([i, j]).innerHTML = winMap[roleCheck];
+    }
+    for (let i = pos[0] + 1, j = pos[1] + 1; i < rows && j < cols && board[i][j] === roleCheck; i++, j++) {
+      getBox([i, j]).classList.add('box--win');
+      getBox([i, j]).innerHTML = winMap[roleCheck];
+    }
+  }
+
+  if (countUpDiag(board, pos, roleCheck) >= 5) {
+    for (let i = pos[0] - 1, j = pos[1] + 1; i >= 0 && j < cols && board[i][j] === roleCheck; i--, j++) {
+      getBox([i, j]).classList.add('box--win');
+      getBox([i, j]).innerHTML = winMap[roleCheck];
+    }
+    for (let i = pos[0] + 1, j = pos[1] - 1; i < rows && j >= 0 && board[i][j] === roleCheck; i++, j--) {
+      getBox([i, j]).classList.add('box--win');
+      getBox([i, j]).innerHTML = winMap[roleCheck];
+    }
+  }
+}
+
 // playing game
 
 boxs.forEach(box => {
@@ -160,6 +212,7 @@ boxs.forEach(box => {
     if (checkWin(getBoard(), getPos(box), role)) {
       document.querySelector('.winner').innerHTML = 'Winner: ' + map[role];
       gameOver = true;
+      highlightWin(getBoard(), getPos(box), role);
       return;
     }
     document.querySelector('.turn').innerHTML = 'Turn: ' + map['o'];
@@ -173,6 +226,7 @@ boxs.forEach(box => {
     if (checkWin(getBoard(), move, aiRole)) {
       document.querySelector('.winner').innerHTML = 'Winner: ' + map[aiRole];
       gameOver = true;
+      highlightWin(getBoard(), move, aiRole);
       return;
     }
     document.querySelector('.turn').innerHTML = 'Turn: ' + map['x'];
