@@ -160,6 +160,14 @@ body {
   background-position: center;
 }
 
+.notification {
+  margin-top: 2rem;
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
 .container {
   background-size: cover;
 }
@@ -171,7 +179,7 @@ body {
   height: 529px; */
   width: calc(var(--size) * var(--columns) + var(--columns) * 1px - 1px);
   height: calc(var(--size) * var(--rows) + var(--rows) * 1px - 1px);
-  margin-top: 50vh;
+  margin-top: 45vh;
   transform: translateY(-50%);
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
