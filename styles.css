@@ -163,8 +163,8 @@ body {
 .notification {
   margin-top: 2rem;
   text-align: center;
-  color: #fff;
-  font-size: 2rem;
+  color: #ccc;
+  font-size: 1rem;
   font-weight: 500;
 }
 
