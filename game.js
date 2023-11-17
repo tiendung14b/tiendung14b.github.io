@@ -208,6 +208,7 @@ boxs.forEach(box => {
     if (box.classList.contains('box--active') || gameOver) {
       return;
     }
+    document.querySelector('.turn').innerHTML = 'Turn: ' + map['o'];
     updateBox(box, role);
     if (checkWin(getBoard(), getPos(box), role)) {
       document.querySelector('.winner').innerHTML = 'Winner: ' + map[role];
@@ -215,7 +216,6 @@ boxs.forEach(box => {
       highlightWin(getBoard(), getPos(box), role);
       return;
     }
-    document.querySelector('.turn').innerHTML = 'Turn: ' + map['o'];
     let move = ai.move(getBoard(), aiRole);
     if (prevo !== undefined && getBox(prevo).classList.contains('box--prevo')) {
       getBox(prevo).classList.remove('box--prevo');
