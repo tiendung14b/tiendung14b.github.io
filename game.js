@@ -6,6 +6,7 @@ const map = {};
 let prevx = [0, 0];
 let prevo = [0, 0];
 let gameOver = false;
+let turn = document.querySelector('.turn')
 map['<i class="fa-solid fa-xmark"></i>'] = 'x';
 map['<i class="fa-solid fa-o"></i>'] = 'o';
 map['x'] = '<i class="fa-solid fa-xmark"></i>';
@@ -208,7 +209,7 @@ boxs.forEach(box => {
     if (box.classList.contains('box--active') || gameOver) {
       return;
     }
-    document.querySelector('.turn').innerHTML = 'Turn: ' + map['o'];
+    turn.innerHTML = 'Turn: ' + map['o'];
     updateBox(box, role);
     if (checkWin(getBoard(), getPos(box), role)) {
       document.querySelector('.winner').innerHTML = 'Winner: ' + map[role];
@@ -216,19 +217,21 @@ boxs.forEach(box => {
       highlightWin(getBoard(), getPos(box), role);
       return;
     }
-    let move = ai.move(getBoard(), aiRole);
-    if (prevo !== undefined && getBox(prevo).classList.contains('box--prevo')) {
-      getBox(prevo).classList.remove('box--prevo');
-    }
-    prevo = move;
-    getBox(move).classList.add('box--prevo');
-    updateBox(boxs[move[0] * cols + move[1]], aiRole);
-    if (checkWin(getBoard(), move, aiRole)) {
-      document.querySelector('.winner').innerHTML = 'Winner: ' + map[aiRole];
-      gameOver = true;
-      highlightWin(getBoard(), move, aiRole);
-      return;
-    }
-    document.querySelector('.turn').innerHTML = 'Turn: ' + map['x'];
+    setTimeout(() => {
+      let move = ai.move(getBoard(), aiRole);
+      if (prevo !== undefined && getBox(prevo).classList.contains('box--prevo')) {
+        getBox(prevo).classList.remove('box--prevo');
+      }
+      prevo = move;
+      getBox(move).classList.add('box--prevo');
+      updateBox(boxs[move[0] * cols + move[1]], aiRole);
+      if (checkWin(getBoard(), move, aiRole)) {
+        document.querySelector('.winner').innerHTML = 'Winner: ' + map[aiRole];
+        gameOver = true;
+        highlightWin(getBoard(), move, aiRole);
+        return;
+      }
+      document.querySelector('.turn').innerHTML = 'Turn: ' + map['x'];
+    }, 10)
   });
 })
