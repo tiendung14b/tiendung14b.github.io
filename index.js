@@ -226,10 +226,9 @@ Object.keys(songs).map((song_title) => {
   outerElem.id = `song_${song_title.split(" ").join("_")}`;
   outerElem.className = "song_item";
 
-  const link = document.createElement("a");
-  link.innerHTML = song_title;
-  link.style = "cursor: pointer";
-  link.onclick = () => {
+  outerElem.innerHTML = song_title;
+  outerElem.style = "cursor: pointer";
+  outerElem.onclick = () => {
     clearTimeLeft();
     // player.loadVideoById({
     //   videoId: VIDEO_ID,
@@ -243,14 +242,13 @@ Object.keys(songs).map((song_title) => {
     currSong = song_title === "All Of The Above" ? undefined : song_title;
     startTime === songs[currSong].start;
     endTime === songs[currSong].end;
-    // player.loadVideoById({
-    //   videoId: VIDEO_ID,
-    //   startSeconds: startTime,
-    //   endSeconds: endTime,
-    // });
-    playButton.click();
+    player.loadVideoById({
+      videoId: VIDEO_ID,
+      startSeconds: startTime,
+      endSeconds: endTime,
+    });
+    // playButton.click();
   };
-  outerElem.appendChild(link);
   const timeLeft = document.createElement("span");
   timeLeft.className = "time-left";
   outerElem.appendChild(timeLeft);
