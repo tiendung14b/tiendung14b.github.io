@@ -243,12 +243,12 @@ Object.keys(songs).map((song_title) => {
     currSong = song_title === "All Of The Above" ? undefined : song_title;
     startTime === songs[currSong].start;
     endTime === songs[currSong].end;
-    player.loadVideoById({
-      videoId: VIDEO_ID,
-      startSeconds: startTime,
-      endSeconds: endTime,
-    });
-    // playButton.click();
+    // player.loadVideoById({
+    //   videoId: VIDEO_ID,
+    //   startSeconds: startTime,
+    //   endSeconds: endTime,
+    // });
+    playButton.click();
   };
   outerElem.appendChild(link);
   const timeLeft = document.createElement("span");
