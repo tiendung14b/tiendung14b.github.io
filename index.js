@@ -231,15 +231,24 @@ Object.keys(songs).map((song_title) => {
   link.style = "cursor: pointer";
   link.onclick = () => {
     clearTimeLeft();
+    // player.loadVideoById({
+    //   videoId: VIDEO_ID,
+    //   startSeconds: startTime,
+    //   endSeconds: endTime,
+    // });
+    // currSong = song_title === "All Of The Above" ? undefined : song_title;
+    // console.log(
+    //   "If you don't know this song, we suggest you go to the lyrics page. You can play the song from that page too :)"
+    // );
+    currSong = song_title === "All Of The Above" ? undefined : song_title;
+    startTime === songs[currSong].start;
+    endTime === songs[currSong].end;
     player.loadVideoById({
       videoId: VIDEO_ID,
       startSeconds: startTime,
       endSeconds: endTime,
     });
-    currSong = song_title === "All Of The Above" ? undefined : song_title;
-    console.log(
-      "If you don't know this song, we suggest you go to the lyrics page. You can play the song from that page too :)"
-    );
+    // playButton.click();
   };
   outerElem.appendChild(link);
   const timeLeft = document.createElement("span");
